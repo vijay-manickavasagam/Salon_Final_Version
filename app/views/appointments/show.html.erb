@@ -1,0 +1,14 @@
+<!-- Vijay -->
+<h1> Your list of appointments </h1>
+
+<table>
+<% @allappointment.each do |allappointment| %>
+<tr>
+    <td><%= allappointment.id %></td>
+    <td><%= allappointment.date %></td>
+    <td><%= allappointment.time.hour %>:00 Hours</td>
+    <td><%= link_to 'Modify', edit_appointment_path(:method => :patch,:appointment_id  => allappointment.id)%></td>
+    <td><%= link_to 'Delete', appointment_path(:appointment_id  => allappointment.id)%></td>
+  </tr>
+<% end %>
+</table>

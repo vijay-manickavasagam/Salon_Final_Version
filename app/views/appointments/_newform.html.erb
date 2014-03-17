@@ -1,0 +1,43 @@
+<!-- Vijay -->
+<div class="page-header">
+  <h1>Enter Your Appointment details</h1>
+</div>
+
+<%= form_for @appointment do |f| %>
+  <% if @appointment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited
+      this client from being saved:</h2>
+    <ul>
+    <% @appointment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= session[:login] %>
+    <%= @client.id %>
+ </p>
+  <p>
+  <%= f.label :Stylist %><br />
+  <%= f.collection_select :stylist_id, @stylist, :id, :first_name, :prompt => "Select a Stylist" %>
+  </p>
+  <p>
+  <%= f.label :Service %><br />
+  <%= f.collection_select :service_id, @service, :id, :service_name, :prompt => "Select a Service" %>
+  </p>
+  </table>
+  </p>
+  </p>
+  <p>
+    <%= f.label :"Choose Date" %><br>
+    <%= f.date_field :"date" %>
+  </p>
+  <p>
+    <%= f.label :"Choose Time" %><br>
+    <%= f.time_select :"time" %>
+  </p>
+    <%= f.submit :"update" %>
+  </p>
+<% end %>

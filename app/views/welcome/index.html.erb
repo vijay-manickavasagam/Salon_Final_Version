@@ -1,0 +1,15 @@
+<h1>Beauty Now </h1>
+
+<% user = User.find_by(:id => session[:login]) %>
+<% if user.present? %>
+<a href="/appointments"> CLICK HERE TO VIEW THE LIST OF SALONS </a>
+<% else %>
+<p> Please login to proceed further </p>
+<% end %>
+
+
+
+
+
+
+
