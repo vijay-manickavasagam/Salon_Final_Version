@@ -6,8 +6,7 @@ def show
 end
 
   def new
-    @client = Client.new
-    #@user = User.find_by(:id => params[:user_id])
+     @client = Client.new
   end
 
   def create

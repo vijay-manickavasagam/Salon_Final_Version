@@ -9,8 +9,8 @@ end
 
 def summary
 	@client = Client.find_by(:user_id => session[:login])
-	# @appointment = Appointment.find_by(:id => params[:id])
-	# @clientid = @appointment.client_id
+	@appointment = Appointment.find_by(:id => params[:id])
+	#@client.id = @appointment.client_id
 	@appointment = Appointment.where(:client_id => @client.id)
 end
 

@@ -18,7 +18,7 @@ def create
     # @stylist.salon_id = session[:login]
     # @salon = Salon.find_by(:id => 'user_id')
     # @stylist.save
-    # redirect_to salon_path(@salon)
+    redirect_to salon_path(@salon)
 end
 
 def edit
@@ -31,13 +31,13 @@ def show
 end
 
 def update
+  @salon = Salon.find_by(:id => params[:salon_id])
 	@stylist = Stylist.find(params[:id])
-   if @stylist.update(params[:stylist].permit(:first_name, :last_name, :user_id, :sex, :phone, :email, :date_of_birth, :image_url))
-     redirect_to salon_path(@salon)
-   else
-     render 'edit'
+   @stylist.update(params[:stylist].permit(:first_name, :last_name, :user_id, :sex, :phone, :email, :date_of_birth, :image_url))
+   redirect_to salon_path(@salon)
+   
+     #render 'edit'
    end
-end
 
 def destroy
 	@stylist = Stylist.find(params[:id])

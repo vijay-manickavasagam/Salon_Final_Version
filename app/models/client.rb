@@ -1,5 +1,4 @@
 class Client < ActiveRecord::Base
   belongs_to :user
-  has_many :appointmens
-
+  has_many :appointments
 end

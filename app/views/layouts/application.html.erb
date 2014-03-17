@@ -17,36 +17,33 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-     <a class="navbar-brand" href=/>Beaulty Now</a>
+     <a class="navbar-brand" href=/>Beauty Now</a>
     </div>
 
      <ul class="nav navbar-nav navbar-right">
-      <% user = User.find_by(:id => session[:login]) %>
-      <% if user.present? %>
-        <p class="navbar-text" >Hi, <%= user.login %>!</p>
-      <% end %>
+    <% @user = User.find_by(:id => session[:login]) %>
+     <%# if @user.present? %>
+        
+      <%# end %>
 
-        <% if user.present? %>
-            <% if user.profile  == "salon" %>
-              <li><a href="/users/<%= user.id %>/">My Salon</a></li>
-              <li><td><%= link_to 'Sign out ', session_path(session),:method => :delete, data: { confirm: 'Are you sure?'}%></td>
-
+        <% if @user.present? %>
+            <p class="navbar-text" >Hi, <%= @user.login %>!</p>
+            <% if @user.profile  == "salon" %>
+              <li><a href="/users/<%= @user.id %>/">My Salon</a></li>
+              <li><td><%= link_to 'Sign out ', session_path(session),:method => :delete, data: { confirm: 'Are you sure?'} %></td>
             <% else %>
-
-             <li><a href="/clients/<%= user.client.id %>/">My Profile</a></li>
-              <li><td><%= link_to 'Sign out ', session_path(session),:method => :delete, data: { confirm: 'Are you sure?'}%></td>
-
-            <% end %>
-
-        <% else %>
-
-
-          <li><a href="/users/new">Sign Up</a></li>
-          <li><a href="/sessions/new">Sign In</a></li>
+              <% if @user.client != nil %>
+              <li><a href="/clients/<%= @user.client.id %>/">My Profile</a></li>
+              <li><td><%= link_to 'Sign out ', session_path(session),:method => :delete, data: { confirm: 'Are you sure?'} %></td>
+              <% end %> 
+           <% end %>
+      <% else %>
+            <li><a href="/users/new">Sign Up</a></li>
+            <li><a href="/sessions/new">Sign In</a></li>
 
         <% end %>
 
-              <li>
+      <!--         <li>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -54,7 +51,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
         </li>
-
+ -->
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
