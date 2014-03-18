@@ -12,6 +12,7 @@ def summary
 	@appointment = Appointment.find_by(:id => params[:id])
 	#@client.id = @appointment.client_id
 	@appointment = Appointment.where(:client_id => @client.id)
+  
 end
 
 def new
@@ -25,8 +26,8 @@ def create
  @client = Client.find_by(:user_id => session[:login])
  @appointment = Appointment.new(appointment_params)
  @appointment.client_id = @client.id
- @salon = Salon.find_by(:user_id => session[:login])
- @appointment.salon_id = @salon.id
+ @salon = Salon.find_by(:user_id => params[:salon_id])
+ #@appointment.salon_id = @salon.id
  @salon = Salon.all
  @appointment.save
  redirect_to appointments_summary_path

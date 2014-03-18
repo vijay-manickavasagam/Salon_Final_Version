@@ -16,8 +16,8 @@
   </div>
   <% end %>
   <p>
-    <%#= session[:login] %>
-    <%#= @client.id %>
+    <% f.text_field :salon_id, :value => params[:salon_id] %>
+   
  </p>
   <p>
   <%= f.label :Stylist %><br />

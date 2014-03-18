@@ -8,10 +8,15 @@
 	<td> Time </td>
 
 <% @appointment.each do |appointment| %>
+<% @stylist = Stylist.find_by(:id => appointment.stylist_id) %>
+<% @salon = Salon.find_by(:id => appointment.salon_id) %>
 <tr>
     <td><%= appointment.id %></td>
     <td><%= appointment.date %></td>
+    <td><%#= @stylist.first_name %></td>
+    <td><%#= @salon.salon_name %></td>
     <td><%= appointment.time.hour %>:00 Hours</td>
+    
     <td><%= link_to 'Delete', appointment_path(appointment),
                         :method => :delete, data: { confirm: 'Are you sure?'}%></td>
   </tr>

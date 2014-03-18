@@ -22,10 +22,6 @@
 
      <ul class="nav navbar-nav navbar-right">
     <% @user = User.find_by(:id => session[:login]) %>
-     <%# if @user.present? %>
-        
-      <%# end %>
-
         <% if @user.present? %>
             <p class="navbar-text" >Hi, <%= @user.login %>!</p>
             <% if @user.profile  == "salon" %>
@@ -40,8 +36,7 @@
       <% else %>
             <li><a href="/users/new">Sign Up</a></li>
             <li><a href="/sessions/new">Sign In</a></li>
-
-        <% end %>
+            <% end %>
 
       <!--         <li>
       <form class="navbar-form navbar-left" role="search">
